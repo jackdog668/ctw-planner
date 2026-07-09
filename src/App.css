@@ -233,6 +233,149 @@ h1 {
   margin-bottom: 22px;
 }
 
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.search-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-field input,
+.compare-row input,
+.note-field input {
+  width: 100%;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  padding: 12px 14px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.search-field input:focus,
+.compare-row input:focus,
+.note-field input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.plan-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.alert {
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--saved);
+}
+
+.alert strong {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 900;
+}
+
+.alert ul,
+.compare-result ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.alert li,
+.compare-result li {
+  margin: 4px 0;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.compare-panel {
+  padding: 18px;
+  border-radius: 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.compare-panel h2 {
+  margin: 0 0 4px;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.compare-panel > p {
+  margin: 0 0 12px;
+  color: var(--mute);
+  font-size: 0.9rem;
+}
+
+.compare-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.compare-row input {
+  flex: 1;
+  min-width: 180px;
+}
+
+.compare-error {
+  margin: 10px 0 0;
+  color: #b45309;
+  font-size: 0.9rem;
+}
+
+.compare-result {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.compare-result p {
+  margin: 0 0 8px;
+}
+
+.note-field {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.note-field span {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--mute);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.event-card.conflict {
+  border-color: color-mix(in srgb, var(--star) 55%, var(--line));
+  box-shadow: inset 3px 0 0 var(--star);
+}
+
 .pill {
   padding: 8px 12px;
   border-radius: 999px;
@@ -702,9 +845,15 @@ h1 {
   }
 
   .plan-banner,
-  .week-day-head {
+  .week-day-head,
+  .plan-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .plan-actions .primary,
+  .plan-actions .ghost {
+    width: 100%;
   }
 
   .tabs {

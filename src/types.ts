@@ -28,6 +28,7 @@ export type Plan = {
   lanes: Lane[];
   savedIds: number[];
   theme: ThemeId;
+  notes: Record<string, string>;
 };
 
 export const DAYS: { key: DayKey; date: string; label: string }[] = [

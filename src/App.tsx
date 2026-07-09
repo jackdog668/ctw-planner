@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import eventsData from "./data/events.json";
-import { downloadItinerary } from "./lib/exportHtml";
+import { downloadItinerary, printItinerary } from "./lib/exportHtml";
+import { downloadIcs } from "./lib/ics";
 import {
+  decodePlan,
+  extractPlanToken,
   loadPlan,
   loadReady,
   planFromUrl,
@@ -16,6 +19,7 @@ import {
   themeCssVars,
   type ThemeId,
 } from "./lib/themes";
+import { defaultDayKey } from "./lib/today";
 import {
   DAYS,
   LANES,
@@ -24,6 +28,7 @@ import {
   type EventItem,
   type Lane,
   type Plan,
+  type Slot,
 } from "./types";
 import "./App.css";
 
@@ -38,10 +43,15 @@ export default function App() {
     if (fromUrl?.name) return true;
     return loadReady() && Boolean(loadPlan().name);
   });
-  const [day, setDay] = useState<DayKey>("Mon");
+  const [day, setDay] = useState<DayKey>(() => defaultDayKey());
   const [tab, setTab] = useState<Tab>("browse");
   const [vibeFilter, setVibeFilter] = useState<Lane | "all">("all");
+  const [query, setQuery] = useState("");
+  const [hideVague, setHideVague] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [compareInput, setCompareInput] = useState("");
+  const [friendPlan, setFriendPlan] = useState<Plan | null>(null);
+  const [compareError, setCompareError] = useState("");
 
   useEffect(() => {
     savePlan(plan);
@@ -75,9 +85,19 @@ export default function App() {
   }
 
   const filteredEvents = useMemo(() => {
-    if (vibeFilter === "all") return events;
-    return events.filter((e) => e.tags.includes(vibeFilter));
-  }, [vibeFilter]);
+    const q = query.trim().toLowerCase();
+    return events.filter((e) => {
+      if (vibeFilter !== "all" && !e.tags.includes(vibeFilter)) return false;
+      if (hideVague && !e.hasRealVenue) return false;
+      if (!q) return true;
+      return (
+        e.title.toLowerCase().includes(q) ||
+        e.location.toLowerCase().includes(q) ||
+        e.vibe.toLowerCase().includes(q) ||
+        e.tags.some((t) => t.includes(q))
+      );
+    });
+  }, [vibeFilter, hideVague, query]);
 
   const rankedDay = useMemo(() => {
     const dayEvents = filteredEvents.filter((e) => e.weekday === day);
@@ -101,6 +121,33 @@ export default function App() {
       .filter((e): e is EventItem => Boolean(e));
   }, [plan.savedIds]);
 
+  const conflicts = useMemo(() => {
+    const map = new Map<string, EventItem[]>();
+    for (const e of savedEvents) {
+      if (!e.weekday) continue;
+      const key = `${e.weekday}:${e.slot}`;
+      const list = map.get(key) || [];
+      list.push(e);
+      map.set(key, list);
+    }
+    return [...map.entries()]
+      .filter(([, list]) => list.length > 1)
+      .map(([key, list]) => {
+        const [weekday, slot] = key.split(":") as [DayKey, Slot];
+        return { weekday, slot, events: list };
+      });
+  }, [savedEvents]);
+
+  const overlap = useMemo(() => {
+    if (!friendPlan) return [];
+    const mine = new Set(plan.savedIds);
+    const byId = new Map(events.map((e) => [e.id, e]));
+    return friendPlan.savedIds
+      .filter((id) => mine.has(id))
+      .map((id) => byId.get(id))
+      .filter((e): e is EventItem => Boolean(e));
+  }, [friendPlan, plan.savedIds]);
+
   function toggleLane(lane: Lane) {
     setPlan((p) => {
       const has = p.lanes.includes(lane);
@@ -113,11 +160,21 @@ export default function App() {
   }
 
   function toggleSave(id: number) {
+    setPlan((p) => {
+      const saved = p.savedIds.includes(id);
+      const savedIds = saved
+        ? p.savedIds.filter((x) => x !== id)
+        : [...p.savedIds, id];
+      const notes = { ...p.notes };
+      if (saved) delete notes[String(id)];
+      return { ...p, savedIds, notes };
+    });
+  }
+
+  function setNote(id: number, note: string) {
     setPlan((p) => ({
       ...p,
-      savedIds: p.savedIds.includes(id)
-        ? p.savedIds.filter((x) => x !== id)
-        : [...p.savedIds, id],
+      notes: { ...p.notes, [String(id)]: note },
     }));
   }
 
@@ -130,6 +187,23 @@ export default function App() {
     } catch {
       prompt("Copy this plan link:", url);
     }
+  }
+
+  function runCompare() {
+    const token = extractPlanToken(compareInput);
+    if (!token) {
+      setFriendPlan(null);
+      setCompareError("Paste a full share link or plan token.");
+      return;
+    }
+    const decoded = decodePlan(token);
+    if (!decoded) {
+      setFriendPlan(null);
+      setCompareError("Couldn't read that plan link.");
+      return;
+    }
+    setFriendPlan(decoded);
+    setCompareError("");
   }
 
   if (!ready) {
@@ -222,25 +296,46 @@ export default function App() {
       </nav>
 
       {(tab === "browse" || tab === "week") && (
-        <div className="filter-row">
-          <button
-            type="button"
-            className={vibeFilter === "all" ? "pill active" : "pill"}
-            onClick={() => setVibeFilter("all")}
-          >
-            All vibes
-          </button>
-          {LANES.map((l) => (
+        <>
+          <div className="toolbar">
+            <label className="search-field">
+              <span className="sr-only">Search events</span>
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search title or venue…"
+              />
+            </label>
             <button
-              key={l.key}
               type="button"
-              className={vibeFilter === l.key ? "pill active" : "pill"}
-              onClick={() => setVibeFilter(l.key)}
+              className={hideVague ? "pill active" : "pill"}
+              onClick={() => setHideVague((v) => !v)}
+              aria-pressed={hideVague}
             >
-              {l.label}
+              Hide vague venues
             </button>
-          ))}
-        </div>
+          </div>
+
+          <div className="filter-row">
+            <button
+              type="button"
+              className={vibeFilter === "all" ? "pill active" : "pill"}
+              onClick={() => setVibeFilter("all")}
+            >
+              All vibes
+            </button>
+            {LANES.map((l) => (
+              <button
+                key={l.key}
+                type="button"
+                className={vibeFilter === l.key ? "pill active" : "pill"}
+                onClick={() => setVibeFilter(l.key)}
+              >
+                {l.label}
+              </button>
+            ))}
+          </div>
+        </>
       )}
 
       {tab === "browse" && (
@@ -281,9 +376,24 @@ export default function App() {
       {tab === "plan" && (
         <MyPlan
           events={savedEvents}
-          savedIds={plan.savedIds}
+          plan={plan}
+          conflicts={conflicts}
+          overlap={overlap}
+          friendPlan={friendPlan}
+          compareInput={compareInput}
+          compareError={compareError}
+          onCompareInput={setCompareInput}
+          onCompare={runCompare}
+          onClearCompare={() => {
+            setFriendPlan(null);
+            setCompareError("");
+            setCompareInput("");
+          }}
           onToggle={toggleSave}
+          onNote={setNote}
           onExport={() => downloadItinerary(plan, events)}
+          onIcs={() => downloadIcs(plan, events)}
+          onPrint={() => printItinerary(plan, events)}
           onSeed={seedFounderPicks}
         />
       )}
@@ -517,15 +627,37 @@ function WeekView({
 
 function MyPlan({
   events,
-  savedIds,
+  plan,
+  conflicts,
+  overlap,
+  friendPlan,
+  compareInput,
+  compareError,
+  onCompareInput,
+  onCompare,
+  onClearCompare,
   onToggle,
+  onNote,
   onExport,
+  onIcs,
+  onPrint,
   onSeed,
 }: {
   events: EventItem[];
-  savedIds: number[];
+  plan: Plan;
+  conflicts: { weekday: DayKey; slot: Slot; events: EventItem[] }[];
+  overlap: EventItem[];
+  friendPlan: Plan | null;
+  compareInput: string;
+  compareError: string;
+  onCompareInput: (v: string) => void;
+  onCompare: () => void;
+  onClearCompare: () => void;
   onToggle: (id: number) => void;
+  onNote: (id: number, note: string) => void;
   onExport: () => void;
+  onIcs: () => void;
+  onPrint: () => void;
   onSeed: () => void;
 }) {
   if (!events.length) {
@@ -545,12 +677,74 @@ function MyPlan({
       <div className="plan-banner">
         <div>
           <h2>{events.length} events saved</h2>
-          <p>Export a self-contained HTML file you can open offline or send.</p>
+          <p>Export, print, or drop onto your phone calendar.</p>
         </div>
-        <button type="button" className="primary" onClick={onExport}>
-          Export HTML itinerary
-        </button>
+        <div className="plan-actions">
+          <button type="button" className="ghost" onClick={onIcs}>
+            Add to calendar
+          </button>
+          <button type="button" className="ghost" onClick={onPrint}>
+            Print / PDF
+          </button>
+          <button type="button" className="primary" onClick={onExport}>
+            Export HTML
+          </button>
+        </div>
       </div>
+
+      {conflicts.length > 0 && (
+        <div className="alert warn">
+          <strong>Possible conflicts</strong>
+          <ul>
+            {conflicts.map((c) => (
+              <li key={`${c.weekday}-${c.slot}`}>
+                {c.weekday} {c.slot}:{" "}
+                {c.events.map((e) => e.title).join(" · ")}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <section className="compare-panel">
+        <h2>Compare with a friend</h2>
+        <p>Paste their share link to see events you both saved.</p>
+        <div className="compare-row">
+          <input
+            value={compareInput}
+            onChange={(e) => onCompareInput(e.target.value)}
+            placeholder="https://…/?plan=…"
+          />
+          <button type="button" className="primary" onClick={onCompare}>
+            Compare
+          </button>
+          {friendPlan && (
+            <button type="button" className="ghost" onClick={onClearCompare}>
+              Clear
+            </button>
+          )}
+        </div>
+        {compareError && <p className="compare-error">{compareError}</p>}
+        {friendPlan && (
+          <div className="compare-result">
+            <p>
+              Overlap with <strong>{friendPlan.name || "friend"}</strong>:{" "}
+              {overlap.length} event{overlap.length === 1 ? "" : "s"}
+            </p>
+            {overlap.length ? (
+              <ul>
+                {overlap.map((e) => (
+                  <li key={e.id}>
+                    {e.weekday} · {e.title}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="empty">No shared saves yet — send them your link!</p>
+            )}
+          </div>
+        )}
+      </section>
 
       {DAYS.map((day) => {
         const dayEvents = events.filter((e) => e.weekday === day.key);
@@ -564,19 +758,22 @@ function MyPlan({
               <span>{dayEvents.length}</span>
             </header>
             <div className="cards">
-              {SLOTS.flatMap((slot) =>
-                dayEvents
-                  .filter((e) => e.slot === slot.key)
-                  .map((event) => (
-                    <EventCard
-                      key={event.id}
-                      event={event}
-                      rankLabel={slot.label}
-                      saved={savedIds.includes(event.id)}
-                      onToggle={() => onToggle(event.id)}
-                    />
-                  ))
-              )}
+              {SLOTS.flatMap((slot) => {
+                const slotEvents = dayEvents.filter((e) => e.slot === slot.key);
+                const crowded = slotEvents.length > 1;
+                return slotEvents.map((event) => (
+                  <EventCard
+                    key={event.id}
+                    event={event}
+                    rankLabel={slot.label}
+                    saved
+                    conflict={crowded}
+                    note={plan.notes[String(event.id)] || ""}
+                    onNote={(value) => onNote(event.id, value)}
+                    onToggle={() => onToggle(event.id)}
+                  />
+                ));
+              })}
             </div>
           </section>
         );
@@ -592,6 +789,9 @@ function EventCard({
   saved,
   onToggle,
   compact = false,
+  conflict = false,
+  note,
+  onNote,
 }: {
   event: EventItem;
   rank?: number;
@@ -599,6 +799,9 @@ function EventCard({
   saved: boolean;
   onToggle: () => void;
   compact?: boolean;
+  conflict?: boolean;
+  note?: string;
+  onNote?: (value: string) => void;
 }) {
   return (
     <article
@@ -606,6 +809,7 @@ function EventCard({
         "event-card",
         saved ? "saved" : "",
         compact ? "compact" : "",
+        conflict ? "conflict" : "",
       ]
         .filter(Boolean)
         .join(" ")}
@@ -618,6 +822,7 @@ function EventCard({
             <span className="rank">#{rank}</span>
           )}
           {event.tier && <span className={`tier ${event.tier}`}>{event.tier}</span>}
+          {conflict && <span className="tier must">overlap</span>}
           {!event.hasRealVenue && <span className="rank">venue tba</span>}
         </div>
         <h3>{event.title}</h3>
@@ -632,6 +837,16 @@ function EventCard({
               ))}
             </div>
             {event.why && <p className="why">{event.why}</p>}
+            {saved && onNote && (
+              <label className="note-field">
+                <span>Note</span>
+                <input
+                  value={note || ""}
+                  onChange={(e) => onNote(e.target.value)}
+                  placeholder="e.g. meet Sam at the door"
+                />
+              </label>
+            )}
           </>
         )}
       </div>
