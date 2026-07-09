@@ -397,9 +397,87 @@ h1 {
 }
 
 .timeline,
-.my-plan {
+.my-plan,
+.week-view {
   display: grid;
   gap: 22px;
+}
+
+.week-banner {
+  padding: 18px 20px;
+  border-radius: 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.week-banner h2 {
+  margin: 0 0 4px;
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.week-banner p {
+  margin: 0;
+  color: var(--mute);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.week-day {
+  padding: 16px;
+  border-radius: 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.week-day-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.week-day-head h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.week-day-head p {
+  margin: 4px 0 0;
+  color: var(--mute);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.week-slots {
+  display: grid;
+  gap: 16px;
+}
+
+.week-slot h3 {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.cards.compact {
+  gap: 8px;
+}
+
+.event-card.compact {
+  padding: 12px 12px 12px 14px;
+}
+
+.event-card.compact h3 {
+  font-size: 1rem;
+}
+
+.event-card.compact .star {
+  width: 38px;
+  height: 38px;
 }
 
 .slot-head {
@@ -623,7 +701,8 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .plan-banner {
+  .plan-banner,
+  .week-day-head {
     flex-direction: column;
     align-items: stretch;
   }
@@ -634,5 +713,7 @@ h1 {
 
   .tabs button {
     flex: 1;
+    padding: 10px 8px;
+    font-size: 0.82rem;
   }
 }

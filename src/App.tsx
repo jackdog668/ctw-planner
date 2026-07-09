@@ -29,7 +29,7 @@ import "./App.css";
 
 const events = eventsData as EventItem[];
 
-type Tab = "browse" | "plan";
+type Tab = "browse" | "week" | "plan";
 
 export default function App() {
   const [plan, setPlan] = useState<Plan>(() => planFromUrl() || loadPlan());
@@ -74,14 +74,25 @@ export default function App() {
     setTab("plan");
   }
 
+  const filteredEvents = useMemo(() => {
+    if (vibeFilter === "all") return events;
+    return events.filter((e) => e.tags.includes(vibeFilter));
+  }, [vibeFilter]);
+
   const rankedDay = useMemo(() => {
-    const dayEvents = events.filter((e) => e.weekday === day);
-    const filtered =
-      vibeFilter === "all"
-        ? dayEvents
-        : dayEvents.filter((e) => e.tags.includes(vibeFilter));
-    return rankEvents(filtered, plan.lanes);
-  }, [day, plan.lanes, vibeFilter]);
+    const dayEvents = filteredEvents.filter((e) => e.weekday === day);
+    return rankEvents(dayEvents, plan.lanes);
+  }, [day, plan.lanes, filteredEvents]);
+
+  const weekByDay = useMemo(() => {
+    return DAYS.map((d) => ({
+      day: d,
+      events: rankEvents(
+        filteredEvents.filter((e) => e.weekday === d.key),
+        plan.lanes
+      ),
+    }));
+  }, [filteredEvents, plan.lanes]);
 
   const savedEvents = useMemo(() => {
     const byId = new Map(events.map((e) => [e.id, e]));
@@ -192,7 +203,14 @@ export default function App() {
           className={tab === "browse" ? "active" : ""}
           onClick={() => setTab("browse")}
         >
-          Timeline
+          Day
+        </button>
+        <button
+          type="button"
+          className={tab === "week" ? "active" : ""}
+          onClick={() => setTab("week")}
+        >
+          Full week
         </button>
         <button
           type="button"
@@ -203,7 +221,29 @@ export default function App() {
         </button>
       </nav>
 
-      {tab === "browse" ? (
+      {(tab === "browse" || tab === "week") && (
+        <div className="filter-row">
+          <button
+            type="button"
+            className={vibeFilter === "all" ? "pill active" : "pill"}
+            onClick={() => setVibeFilter("all")}
+          >
+            All vibes
+          </button>
+          {LANES.map((l) => (
+            <button
+              key={l.key}
+              type="button"
+              className={vibeFilter === l.key ? "pill active" : "pill"}
+              onClick={() => setVibeFilter(l.key)}
+            >
+              {l.label}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {tab === "browse" && (
         <>
           <div className="day-row">
             {DAYS.map((d) => (
@@ -218,33 +258,27 @@ export default function App() {
             ))}
           </div>
 
-          <div className="filter-row">
-            <button
-              type="button"
-              className={vibeFilter === "all" ? "pill active" : "pill"}
-              onClick={() => setVibeFilter("all")}
-            >
-              All vibes
-            </button>
-            {LANES.map((l) => (
-              <button
-                key={l.key}
-                type="button"
-                className={vibeFilter === l.key ? "pill active" : "pill"}
-                onClick={() => setVibeFilter(l.key)}
-              >
-                {l.label}
-              </button>
-            ))}
-          </div>
-
           <Timeline
             events={rankedDay}
             savedIds={plan.savedIds}
             onToggle={toggleSave}
           />
         </>
-      ) : (
+      )}
+
+      {tab === "week" && (
+        <WeekView
+          weekByDay={weekByDay}
+          savedIds={plan.savedIds}
+          onToggle={toggleSave}
+          onJumpDay={(key) => {
+            setDay(key);
+            setTab("browse");
+          }}
+        />
+      )}
+
+      {tab === "plan" && (
         <MyPlan
           events={savedEvents}
           savedIds={plan.savedIds}
@@ -405,6 +439,82 @@ function Timeline({
   );
 }
 
+function WeekView({
+  weekByDay,
+  savedIds,
+  onToggle,
+  onJumpDay,
+}: {
+  weekByDay: { day: (typeof DAYS)[number]; events: EventItem[] }[];
+  savedIds: number[];
+  onToggle: (id: number) => void;
+  onJumpDay: (key: DayKey) => void;
+}) {
+  const total = weekByDay.reduce((n, d) => n + d.events.length, 0);
+
+  return (
+    <div className="week-view">
+      <div className="week-banner">
+        <div>
+          <h2>Full week</h2>
+          <p>
+            {total} events ranked for your lanes
+            {total ? " · jump into a day anytime" : ""}
+          </p>
+        </div>
+      </div>
+
+      {weekByDay.map(({ day, events: dayEvents }) => (
+        <section key={day.key} className="week-day">
+          <header className="week-day-head">
+            <div>
+              <h2>
+                {day.key} · {day.date}
+              </h2>
+              <p>{dayEvents.length} events</p>
+            </div>
+            <button
+              type="button"
+              className="ghost"
+              onClick={() => onJumpDay(day.key)}
+            >
+              Open day
+            </button>
+          </header>
+
+          {dayEvents.length ? (
+            <div className="week-slots">
+              {SLOTS.map((slot) => {
+                const items = dayEvents.filter((e) => e.slot === slot.key);
+                if (!items.length) return null;
+                return (
+                  <div key={slot.key} className="week-slot">
+                    <h3>{slot.label}</h3>
+                    <div className="cards compact">
+                      {items.map((event, i) => (
+                        <EventCard
+                          key={event.id}
+                          event={event}
+                          rank={i + 1}
+                          compact
+                          saved={savedIds.includes(event.id)}
+                          onToggle={() => onToggle(event.id)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p className="empty">No events for these filters.</p>
+          )}
+        </section>
+      ))}
+    </div>
+  );
+}
+
 function MyPlan({
   events,
   savedIds,
@@ -481,15 +591,25 @@ function EventCard({
   rankLabel,
   saved,
   onToggle,
+  compact = false,
 }: {
   event: EventItem;
   rank?: number;
   rankLabel?: string;
   saved: boolean;
   onToggle: () => void;
+  compact?: boolean;
 }) {
   return (
-    <article className={saved ? "event-card saved" : "event-card"}>
+    <article
+      className={[
+        "event-card",
+        saved ? "saved" : "",
+        compact ? "compact" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <div className="event-main">
         <div className="event-top">
           <span className="emoji">{event.emoji || "•"}</span>
@@ -502,14 +622,18 @@ function EventCard({
         </div>
         <h3>{event.title}</h3>
         <p className="loc">{event.location || "Venue TBA"}</p>
-        <div className="tag-row">
-          {event.tags.map((t) => (
-            <span key={t} className="tag">
-              {t}
-            </span>
-          ))}
-        </div>
-        {event.why && <p className="why">{event.why}</p>}
+        {!compact && (
+          <>
+            <div className="tag-row">
+              {event.tags.map((t) => (
+                <span key={t} className="tag">
+                  {t}
+                </span>
+              ))}
+            </div>
+            {event.why && <p className="why">{event.why}</p>}
+          </>
+        )}
       </div>
       <div className="event-actions">
         <button
