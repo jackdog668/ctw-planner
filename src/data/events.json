@@ -1,0 +1,1481 @@
+[
+  {
+    "id": 1,
+    "title": "Aspen ideas: climate 2026",
+    "date": "2026-07-20",
+    "weekday": "Mon",
+    "location": "Convene, Willis Tower",
+    "emoji": "🌱",
+    "vibe": "Climate",
+    "url": "https://register.aspenideasclimate.org/event/2026/regProcessStep1?RefId=Web_2&rt=IfqDQJSUf0WTz15FjyPwMw",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 2,
+    "title": "Chicago sports tech week",
+    "date": "2026-07-20",
+    "weekday": "Mon",
+    "location": "Multiple Events",
+    "emoji": "🏀",
+    "vibe": "Sports",
+    "url": "https://chicagosportstechweek.com/",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 3,
+    "title": "Prompt. AI innovation series",
+    "date": "2026-07-20",
+    "weekday": "Mon",
+    "location": "Cine City Studios",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://luma.com/5v7dnv8w",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 4,
+    "title": "TCW2026: basecamp @ technexus",
+    "date": "2026-07-20",
+    "weekday": "Mon",
+    "location": "TeamWorking by TechNexus",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/00tj0fik",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 28,
+    "tier": "must",
+    "why": "Home-base energy; easy drop-in networking all week vibe"
+  },
+  {
+    "id": 5,
+    "title": "UChicago tech ventures demo day",
+    "date": "2026-07-20",
+    "weekday": "Mon",
+    "location": "Provided Upon Registration",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://polsky.uchicago.edu/event/uchicago-tech-ventures-demo-day-2/",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "founder",
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 6,
+    "title": "Innovation match speed networking",
+    "date": "2026-07-20",
+    "weekday": "Mon",
+    "location": "mHUB",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://mhub.org/events/innovation-match-speed-networking-for-founders-researchers-and-inventors-178100",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 27,
+    "tier": "must",
+    "why": "High-signal founder intros; mHUB crowd is builders + inventors"
+  },
+  {
+    "id": 7,
+    "title": "Future of commerce summit: discover, build, launch",
+    "date": "2026-07-20",
+    "weekday": "Mon",
+    "location": "Kennedy-King College",
+    "emoji": "💵",
+    "vibe": "Other",
+    "url": "https://www.gechamber.com/futureofcommerce",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "marketer"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 8,
+    "title": "Techchicago week kickoff",
+    "date": "2026-07-20",
+    "weekday": "Mon",
+    "location": "Skyline Pitch Chicago",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/tjn94z5t",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "morning",
+    "founderBoost": 29,
+    "tier": "must",
+    "why": "Week opener — max density of founders + networkers in one room"
+  },
+  {
+    "id": 9,
+    "title": "Grassroots founder pitch kickoff",
+    "date": "2026-07-20",
+    "weekday": "Mon",
+    "location": "Provided Upon Registration",
+    "emoji": "🚀",
+    "vibe": "Other",
+    "url": "https://luma.com/grassroots-pitch2026",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "founder",
+      "networker"
+    ],
+    "slot": "evening",
+    "founderBoost": 26,
+    "tier": "strong",
+    "why": "Pure founder lane — pitches + peer founders (venue TBD so RSVP early)"
+  },
+  {
+    "id": 10,
+    "title": "A seat at the cap table: we don't wait for invitations",
+    "date": "2026-07-20",
+    "weekday": "Mon",
+    "location": "Provided upon registration",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://luma.com/wlci6n0y",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "founder",
+      "builder"
+    ],
+    "slot": "evening",
+    "founderBoost": 25,
+    "tier": "strong",
+    "why": "Fundraising / ownership framing; founder+capital crossover"
+  },
+  {
+    "id": 11,
+    "title": "Skip the small talk",
+    "date": null,
+    "weekday": null,
+    "location": "20",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://chicago-tech-week-map-2026.vercel.app/Downtown",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 12,
+    "title": "Analog room: humans in the loop",
+    "date": "2026-07-20",
+    "weekday": "Mon",
+    "location": "SoHo House Chicago",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://readinessintelligencelab.com/community/events/ecosystem-builders-in-the-loop",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 13,
+    "title": "AI builder day: mongodb + langchain",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "The Dalcy",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://events.mongodb.com/buildingproductionaiagentswithlangchain",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 23,
+    "tier": "strong",
+    "why": "Your builder lane — hands-on AI agents stack"
+  },
+  {
+    "id": 14,
+    "title": "Bagel entrepreneurs @ techchicago week",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "River North, Chicago",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/g77hyv4c",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "founder",
+      "networker"
+    ],
+    "slot": "morning",
+    "founderBoost": 24,
+    "tier": "must",
+    "why": "Casual founder networking — low friction; River North"
+  },
+  {
+    "id": 15,
+    "title": "Chicago's second annual fashion tech meet up!",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "2021 W. Fulton St Suite K-111",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/2vejmic9",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 16,
+    "title": "AI in the product development life cycle",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Aon Center",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://forms.office.com/pages/responsepage.aspx?id=KFGnnESilkWHe_JIKOR24onNtour8I9LpJFpwcJfWE5UQjBWMVpCV1IyOUVEQzlPSVdDSElLRk1CUy4u",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 17,
+    "title": "Smart tech, big dreams: learning AI for the future",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Chicago State University",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://forms.cloud.microsoft/pages/responsepage.aspx?id=ZRDrjL14YUeRYo7jUhWvvwCes0UAMHtLok2xNbz_hXNUM0xUSU0wQ0wxTDdFOTVRTkMyVUo3VlBMTi4u&route=shorturl",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 18,
+    "title": "Techwalk",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Chicago Riverwalk",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/71ieg50p",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 19,
+    "title": "Pilot readiness – designing and running a pilot",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Virtual",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://mhub.org/events/pilot-readiness---designing-and-running-a-pilot-186793",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker",
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 20,
+    "title": "Chicago connection lab: solving for community",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Fabrik Chicago",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/rs962ot6",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 21,
+    "title": "Systematic trading with AI-tested trading strategies",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Provided Upon Registration",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://partiful.com/e/5ZlPF5HTHNaOCCQs55aS",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 22,
+    "title": "Founder fest chicago (during techchicago)",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Three Cities Social Club (Wicker Park)",
+    "emoji": "🚀",
+    "vibe": "Other",
+    "url": "https://www.kampevents.com/events/founder-fest-chicago",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "founder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 21,
+    "tier": "must",
+    "why": "Founder density social; Wicker Park"
+  },
+  {
+    "id": 23,
+    "title": "Women investing / investing in women",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "MATTER",
+    "emoji": "💸",
+    "vibe": "Other",
+    "url": "https://lp.constantcontactpages.com/ev/reg/r83mxxz/lp/ff1e6291-c2a5-42e8-bddc-718006083d9f",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 24,
+    "title": "Richiebot | art exhibit & documentary film experience",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Vault Gallerie",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://luma.com/0o9262vi",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 25,
+    "title": "Per scholas chicago satellite campus launch",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Xchange Chicago, Gary Comer Youth Center",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/zbdwqe0u",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 26,
+    "title": "Women who lead @ chicago tech week",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Porter Kitchen + Deck",
+    "emoji": "👩‍💻",
+    "vibe": "Other",
+    "url": "https://luma.com/vy9r24a4",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 27,
+    "title": "1871 techpalooza",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "TBD",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://gotechchicago.com/mec-events/1871-techpalooza/",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 28,
+    "title": "Chicago demo day",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Norton Rose Fulbright",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://www.eventbrite.com/e/chicago-demo-day-tickets-1991000515137?aff=oddtdtcreator",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "founder",
+      "networker"
+    ],
+    "slot": "evening",
+    "founderBoost": 20,
+    "tier": "strong",
+    "why": "See what others are shipping; good network + product taste"
+  },
+  {
+    "id": 29,
+    "title": "Building bridges 2: investors meeting investors",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "—",
+    "emoji": "💸",
+    "vibe": "Other",
+    "url": "https://luma.com/r9psk5vt",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 30,
+    "title": "So, you want to start a business?",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "TechNexus Venture Collaborative",
+    "emoji": "🚀",
+    "vibe": "Other",
+    "url": "https://queerconnectionsmoc.club/#upcoming-events",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 31,
+    "title": "AI & quantum security beyond the perimeter",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Provided Upon Registration",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://luma.com/gopher-mcp-techweek",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 32,
+    "title": "Health2tech chicago",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Chicago",
+    "emoji": "🧬",
+    "vibe": "Other",
+    "url": "https://luma.com/zbe7g6nt",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 33,
+    "title": "Tech for good: youth mentoring & innovation gathering",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "1617 W Washington Blvd, Chicago",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://events.eventnoire.com/e/tech-for-good-youth-mentoring-innovation-gathering",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 34,
+    "title": "Chicago defense and national security tech social",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Alumni Ventures LaSalle-Wacker Building",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/chicago-defense-tech-social-2026",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 35,
+    "title": "Startup pitch competition",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Fulton Market",
+    "emoji": "🚀",
+    "vibe": "Other",
+    "url": "https://chicagosportstechweek.com/startup-pitch",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "founder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 19,
+    "tier": "optional",
+    "why": "Watch pitches / sports-tech adjacent; Fulton Market"
+  },
+  {
+    "id": 36,
+    "title": "Quantum roundtable: what's your business 'qase'?",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Union League Club of Chicago",
+    "emoji": "🚀",
+    "vibe": "Other",
+    "url": "https://theqampus.club/upcoming-events",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 37,
+    "title": "Digital delivery chicago meetup",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "Aon Center",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://www.meetup.com/js-chi/events/312068434/",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 38,
+    "title": "Founders & funders™: chicago vc reverse pitch™",
+    "date": "2026-07-21",
+    "weekday": "Tue",
+    "location": "mHUB",
+    "emoji": "🚀",
+    "vibe": "Other",
+    "url": "https://luma.com/fnfxchi0726",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "founder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 22,
+    "tier": "must",
+    "why": "Core founder event — VCs pitch YOU; mHUB"
+  },
+  {
+    "id": 39,
+    "title": "Rcs: the new way to interact with customers via texts",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "Teamworking by TechNexus",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://nativemsg.com/chicago-tech-week-event-signup",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker",
+      "marketer"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 40,
+    "title": "1 million cups chicago",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "Teamworking by TechNexus",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/ac1b8c4s",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "founder",
+      "networker"
+    ],
+    "slot": "morning",
+    "founderBoost": 18,
+    "tier": "must",
+    "why": "Classic founder feedback loop; TechNexus"
+  },
+  {
+    "id": 41,
+    "title": "Chicago media & entertainment tech summit",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "2112 (4245 N Knox Ave)",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://www.eventbrite.com/e/chicago-media-entertainment-tech-summit-tickets-1989553821036",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 42,
+    "title": "Stop running pilots. start running AI.",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "200 N LaSalle St, Chicago",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://ai.launchconsulting.com/executive-briefing-launch-chicago",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 16,
+    "tier": "strong",
+    "why": "Operator/builder AI — less fluff more shipping"
+  },
+  {
+    "id": 43,
+    "title": "AI-matched connections [virtual]",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "Virtual",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://posh.vip/e/aimatched-conversations-general-edition-1",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker",
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 44,
+    "title": "Chicago builds: future of money",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "Fulton Market",
+    "emoji": "💵",
+    "vibe": "Other",
+    "url": "https://luma.com/48bcksp6",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 45,
+    "title": "Let's make a movie! future of AI in media+",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "20 N Wacker Dr, Suite 1200",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://luma.com/z2i2qp74",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 46,
+    "title": "Velocity through community: human-forward AI",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "The Metropolitan",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://www.eventbrite.com/e/velocity-through-community-solving-grand-challenges-via-human-forward-ai-tickets-1989831909807",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 47,
+    "title": "Partnerships powering the future of healthcare AI",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "MATTER",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://luma.com/b9a7bqgw",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 48,
+    "title": "Queer tech club × pie: techchicago week mixer",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "PIE Office",
+    "emoji": "📍",
+    "vibe": "Other",
+    "url": "https://getpie.at/n8lfEMYs",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "evening",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 49,
+    "title": "AI, search & scale: elastic x hyperflex",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "Alliance Française de Chicago",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://www.meetup.com/elastic-chicago-user-group/events/314736879/",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 50,
+    "title": "Pixels & prosecco: women in tech mixer",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "Provided upon registration",
+    "emoji": "👩‍💻",
+    "vibe": "Other",
+    "url": "https://luma.com/3cy28qcq",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "networker"
+    ],
+    "slot": "evening",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 51,
+    "title": "10th annual summer pitch battle & party",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "Chicago",
+    "emoji": "🚀",
+    "vibe": "Other",
+    "url": "https://www.startupgrind.com/events/details/startup-grind-chicago-presents-10th-annual-summer-pitch-battle-amp-party/",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "founder",
+      "networker"
+    ],
+    "slot": "evening",
+    "founderBoost": 15,
+    "tier": "strong",
+    "why": "Pitch energy + party networking (venue vague — confirm)"
+  },
+  {
+    "id": 52,
+    "title": "The marketing hot seat: techweek edition",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "Fabrik Chicago",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/xu9e5l89",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker",
+      "marketer"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 17,
+    "tier": "must",
+    "why": "Your marketer lane — practical GTM pressure-test"
+  },
+  {
+    "id": 53,
+    "title": "Just AI foundation: a future worth imagining",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "Provided Upon Registration",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://www.eventbrite.com/e/just-ai-foundation-a-future-worth-imagining-tickets-1991428993728",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 54,
+    "title": "Women founders crushing it",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "Bureau Gravity, Aurora, IL",
+    "emoji": "🚀",
+    "vibe": "Other",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSeipqoXCBrxuTJLq2q_GNHhvOZ4U5dH6UIAygX_eO3BOK8XPw/viewform",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "founder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 55,
+    "title": "The bots – and robots – are ready. are you?",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "Provided Upon Registration",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://luma.com/xz847fkm",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 56,
+    "title": "Sparklabs founder dinner",
+    "date": "2026-07-22",
+    "weekday": "Wed",
+    "location": "—",
+    "emoji": "🚀",
+    "vibe": "Other",
+    "url": "https://partiful.com/e/y0OjQV0FTtkqHxrSiVYH",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "founder"
+    ],
+    "slot": "evening",
+    "founderBoost": 14,
+    "tier": "optional",
+    "why": "Intimate founder dinner if you can get in"
+  },
+  {
+    "id": 57,
+    "title": "The next horizon: summer soirée for tech & marketing",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "Hoste",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/wrts6agi",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker",
+      "marketer"
+    ],
+    "slot": "evening",
+    "founderBoost": 10,
+    "tier": "strong",
+    "why": "Marketer networking soirée"
+  },
+  {
+    "id": 58,
+    "title": "Web3 investor day",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "Willis Tower - Convene",
+    "emoji": "💸",
+    "vibe": "Other",
+    "url": "https://www.decasonic.com/web3-investor-day-2026",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 9,
+    "tier": "optional",
+    "why": "Only if crypto/web3 capital is relevant to you"
+  },
+  {
+    "id": 59,
+    "title": "Tech meets green – tour pcs for people (10am)",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "Oak Lawn, IL",
+    "emoji": "🌱",
+    "vibe": "Climate",
+    "url": "https://events.eventnoire.com/e/pcs-for-people-tech-center-tour-10-00-am",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 60,
+    "title": "Tech meets green – tour pcs for people (2pm)",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "Oak Lawn, IL",
+    "emoji": "🌱",
+    "vibe": "Climate",
+    "url": "https://events.eventnoire.com/e/pcs-for-people-tech-center-tour-2-00-pm-2",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 61,
+    "title": "Passport to founders",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "Fabrik Chicago",
+    "emoji": "🏀",
+    "vibe": "Sports",
+    "url": "https://luma.com/e1d75gnn",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "founder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 13,
+    "tier": "must",
+    "why": "On-theme founder crawl / multi-stop networking"
+  },
+  {
+    "id": 62,
+    "title": "Powering partnerships clean energy roundtable",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "Provided Upon Registration",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/49h6ycn6",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 63,
+    "title": "The AI workforce shift",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "70 W Madison, Chicago",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://luma.com/vwpk2xq3",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 64,
+    "title": "Wmn fintech showcase",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "BMO Tower - 320 S Canal",
+    "emoji": "👩‍💻",
+    "vibe": "Other",
+    "url": "https://luma.com/3i1kqqac",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 65,
+    "title": "The voucher networking mixer",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "20 N Wacker Dr, 15th Fl",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/268wtsd0",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "evening",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 66,
+    "title": "Milna launch party @ teamworking",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "Teamworking by TechNexus",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/q3ead560",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "evening",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 67,
+    "title": "Chicago grassroots tech meetup",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "—",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/Grassroots-July26",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 68,
+    "title": "Chicat: art & technology",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "1701 W 13th St, Chicago",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=VI95FNthhUq-rCjE5lEAcZMWNmaUqopPjM30q2BUrFJUOTU1TzE2RVBRNlFFTlk4TEo5RDhZQjIxMi4u",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 69,
+    "title": "Stripe developer meetup chicago",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "Stripe Office Chicago",
+    "emoji": "💵",
+    "vibe": "Other",
+    "url": "https://www.meetup.com/stripe-chicago/events/315073529/",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker",
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 70,
+    "title": "Summer sparks: AI, revenue and customer success",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "Workbox, River North",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://luma.com/l05itl91",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder",
+      "marketer"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 71,
+    "title": "Fundraising for the rest of us",
+    "date": "2026-07-23",
+    "weekday": "Thu",
+    "location": "Three Cities Social Club",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://luma.com/qwvogdy9",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "founder",
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 12,
+    "tier": "must",
+    "why": "Practical fundraising for non-unicorn founders"
+  },
+  {
+    "id": 72,
+    "title": "Techwalk: solving grand challenges",
+    "date": "2026-07-24",
+    "weekday": "Fri",
+    "location": "Lakefront",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/hyofk2s5",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 6,
+    "tier": "optional",
+    "why": "Active networking walk — good for serendipity"
+  },
+  {
+    "id": 73,
+    "title": "Building resilient communities brunch",
+    "date": "2026-07-24",
+    "weekday": "Fri",
+    "location": "Ovation Chicago",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/0uaoipd4",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "morning",
+    "founderBoost": 8,
+    "tier": "strong",
+    "why": "Soft close networking; community builders"
+  },
+  {
+    "id": 74,
+    "title": "AI voices: the translation layer",
+    "date": "2026-07-24",
+    "weekday": "Fri",
+    "location": "Microsoft Tech Center, Aon Center",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://www.ticketfalcon.com/e/alvoices2026/",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 75,
+    "title": "Fastest draw in the 312",
+    "date": "2026-07-24",
+    "weekday": "Fri",
+    "location": "Provided Upon Registration",
+    "emoji": "🎉",
+    "vibe": "Networking / General",
+    "url": "https://luma.com/2o7ethm3",
+    "hasRealVenue": false,
+    "dataQuality": "vague_or_missing_location",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  },
+  {
+    "id": 76,
+    "title": "Founders and funders forum for sustainable tech",
+    "date": "2026-07-24",
+    "weekday": "Fri",
+    "location": "Polsky Center",
+    "emoji": "🤖",
+    "vibe": "AI",
+    "url": "https://luma.com/wxgxbsko",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "founder",
+      "builder"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 7,
+    "tier": "optional",
+    "why": "Founders + funders if climate/sustainability fits; else skip"
+  },
+  {
+    "id": 77,
+    "title": "Chicago climate smart home tour",
+    "date": "2026-07-25",
+    "weekday": "Sat",
+    "location": "2219 W. Cortez St, Chicago",
+    "emoji": "🌱",
+    "vibe": "Climate",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLScn31_5-fr2qgrc3moa1a67cCIL_hAaxONDOd6gO-vLDFvuaQ/viewform",
+    "hasRealVenue": true,
+    "dataQuality": "ok",
+    "tags": [
+      "networker"
+    ],
+    "slot": "afternoon",
+    "founderBoost": 0,
+    "tier": null,
+    "why": null
+  }
+]
