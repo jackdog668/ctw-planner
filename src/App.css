@@ -741,15 +741,17 @@ h1 {
 .event-actions {
   display: grid;
   align-content: start;
-  justify-items: end;
-  gap: 8px;
+  justify-items: stretch;
+  gap: 10px;
+  min-width: 108px;
 }
 
 .star {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
+  justify-self: end;
   border-radius: 50%;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   line-height: 1;
   background: var(--paper);
   color: var(--mute);
@@ -767,13 +769,35 @@ h1 {
 }
 
 .event-actions a {
-  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.95rem;
   font-weight: 800;
   text-decoration: none;
+  text-align: center;
+  line-height: 1.1;
 }
 
 .event-actions a:hover {
-  text-decoration: underline;
+  filter: brightness(0.96);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.event-card.compact .event-actions {
+  min-width: 96px;
+}
+
+.event-card.compact .event-actions a {
+  min-height: 40px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
 }
 
 .plan-banner,
