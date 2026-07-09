@@ -861,7 +861,7 @@ function EventCard({
           {saved ? "★" : "☆"}
         </button>
         <a href={event.url} target="_blank" rel="noopener noreferrer">
-          Open
+          Open event
         </a>
       </div>
     </article>
