@@ -3,7 +3,9 @@ import eventsData from "./data/events.json";
 import { downloadItinerary, printItinerary } from "./lib/exportHtml";
 import { downloadIcs } from "./lib/ics";
 import {
+  clearPlanQuery,
   decodePlan,
+  emptyPlan,
   extractPlanToken,
   loadPlan,
   loadReady,
@@ -38,6 +40,7 @@ type Tab = "browse" | "week" | "plan";
 
 export default function App() {
   const [plan, setPlan] = useState<Plan>(() => planFromUrl() || loadPlan());
+  const [viewingShared, setViewingShared] = useState(() => Boolean(planFromUrl()));
   const [ready, setReady] = useState(() => {
     const fromUrl = planFromUrl();
     if (fromUrl?.name) return true;
@@ -52,14 +55,53 @@ export default function App() {
   const [compareInput, setCompareInput] = useState("");
   const [friendPlan, setFriendPlan] = useState<Plan | null>(null);
   const [compareError, setCompareError] = useState("");
+  // Snapshot before any shared-view effects; localStorage stays intact while viewingShared.
+  const [ownStoredSnapshot] = useState(() => loadPlan());
 
+  const hasOwnStoredPlan =
+    viewingShared &&
+    Boolean(ownStoredSnapshot.name.trim()) &&
+    ownStoredSnapshot.name.trim().toLowerCase() !== plan.name.trim().toLowerCase();
+
+  // Shared links are view-only until the visitor explicitly adopts them.
+  // Auto-saving a ?plan= URL was overwriting the only localStorage slot.
   useEffect(() => {
+    if (viewingShared) return;
     savePlan(plan);
-  }, [plan]);
+  }, [plan, viewingShared]);
 
   useEffect(() => {
+    if (viewingShared) return;
     saveReady(ready);
-  }, [ready]);
+  }, [ready, viewingShared]);
+
+  function adoptSharedPlan() {
+    setViewingShared(false);
+    savePlan(plan);
+    saveReady(true);
+    setReady(true);
+    clearPlanQuery();
+  }
+
+  function startMyOwnPlan() {
+    const blank = emptyPlan();
+    setPlan(blank);
+    setViewingShared(false);
+    setReady(false);
+    savePlan(blank);
+    saveReady(false);
+    clearPlanQuery();
+    setTab("browse");
+  }
+
+  function restoreMyPlan() {
+    const mine = loadPlan();
+    setPlan(mine);
+    setViewingShared(false);
+    setReady(Boolean(mine.name.trim()) && loadReady());
+    clearPlanQuery();
+    setTab("browse");
+  }
 
   useEffect(() => {
     const vars = themeCssVars(getTheme(plan.theme));
@@ -224,6 +266,8 @@ export default function App() {
             if (!plan.name.trim()) return;
             setReady(true);
           }}
+          onStartFresh={startMyOwnPlan}
+          showStartFresh={Boolean(plan.name.trim() || plan.savedIds.length)}
         />
         <SiteFooter />
       </div>
@@ -236,6 +280,30 @@ export default function App() {
         <i className="dot" />
         <span>CTW Planner</span>
       </div>
+      {viewingShared && (
+        <div className="share-banner" role="status">
+          <div>
+            <strong>Viewing {possessive(plan.name)} shared plan</strong>
+            <p>
+              This link is preview-only. Your own saved plan stays untouched until
+              you choose below.
+            </p>
+          </div>
+          <div className="share-banner-actions">
+            {hasOwnStoredPlan && (
+              <button type="button" className="ghost" onClick={restoreMyPlan}>
+                Back to my plan
+              </button>
+            )}
+            <button type="button" className="ghost" onClick={startMyOwnPlan}>
+              Start my own
+            </button>
+            <button type="button" className="primary" onClick={adoptSharedPlan}>
+              Use this plan
+            </button>
+          </div>
+        </div>
+      )}
       <header className="top">
         <div>
           <p className="eyebrow">Chicago · Jul 20–25</p>
@@ -252,7 +320,7 @@ export default function App() {
               className="ghost"
               onClick={() => {
                 setReady(false);
-                saveReady(false);
+                if (!viewingShared) saveReady(false);
               }}
             >
               Edit lanes
@@ -491,11 +559,15 @@ function Setup({
   onName,
   onToggleLane,
   onStart,
+  onStartFresh,
+  showStartFresh,
 }: {
   plan: Plan;
   onName: (name: string) => void;
   onToggleLane: (lane: Lane) => void;
   onStart: () => void;
+  onStartFresh: () => void;
+  showStartFresh: boolean;
 }) {
   return (
     <section className="setup">
@@ -543,6 +615,15 @@ function Setup({
         >
           Open my timeline
         </button>
+        {showStartFresh && (
+          <button
+            type="button"
+            className="ghost wide"
+            onClick={onStartFresh}
+          >
+            Start a fresh plan
+          </button>
+        )}
       </div>
     </section>
   );

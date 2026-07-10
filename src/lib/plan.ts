@@ -12,6 +12,14 @@ const DEFAULT_PLAN: Plan = {
   notes: {},
 };
 
+export function emptyPlan(): Plan {
+  return {
+    ...DEFAULT_PLAN,
+    lanes: [...DEFAULT_PLAN.lanes],
+    notes: {},
+  };
+}
+
 function normalizeNotes(raw: unknown): Record<string, string> {
   if (!raw || typeof raw !== "object") return {};
   const out: Record<string, string> = {};
@@ -37,12 +45,21 @@ function normalizePlan(parsed: Partial<Plan> & { notes?: unknown }): Plan {
 export function loadPlan(): Plan {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { ...DEFAULT_PLAN, lanes: [...DEFAULT_PLAN.lanes], notes: {} };
+    if (!raw) return emptyPlan();
     const parsed = JSON.parse(raw) as Partial<Plan>;
     return normalizePlan(parsed);
   } catch {
-    return { ...DEFAULT_PLAN, lanes: [...DEFAULT_PLAN.lanes], notes: {} };
+    return emptyPlan();
   }
+}
+
+/** Strip ?plan= so a refresh doesn't re-enter shared-view mode. */
+export function clearPlanQuery(): void {
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has("plan")) return;
+  url.searchParams.delete("plan");
+  const next = `${url.pathname}${url.search}${url.hash}`;
+  window.history.replaceState({}, "", next);
 }
 
 export function savePlan(plan: Plan) {
