@@ -1157,18 +1157,20 @@
     "date": "2026-07-23",
     "weekday": "Thu",
     "location": "Fabrik Chicago",
-    "emoji": "🏀",
-    "vibe": "Sports",
+    "emoji": "🚀",
+    "vibe": "Networking / General",
     "url": "https://luma.com/e1d75gnn",
     "hasRealVenue": true,
     "dataQuality": "ok",
     "tags": [
-      "founder"
+      "founder",
+      "networker",
+      "marketer"
     ],
     "slot": "afternoon",
     "founderBoost": 13,
     "tier": "must",
-    "why": "On-theme founder crawl / multi-stop networking"
+    "why": "Women-founder showcase at Fabrik; panels, fireside, 50 founders across two rotations"
   },
   {
     "id": 62,
