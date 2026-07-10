@@ -45,7 +45,43 @@ body {
 .shell {
   width: min(820px, calc(100% - 28px));
   margin: 0 auto;
-  padding: 24px 0 88px;
+  padding: 24px 0 40px;
+}
+
+.site-footer {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 8px;
+}
+
+.footer-brand {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.footer-links {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--mute);
+}
+
+.footer-links a {
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
 }
 
 .brand-mark {

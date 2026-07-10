@@ -225,6 +225,7 @@ export default function App() {
             setReady(true);
           }}
         />
+        <SiteFooter />
       </div>
     );
   }
@@ -397,7 +398,46 @@ export default function App() {
           onSeed={seedFounderPicks}
         />
       )}
+      <SiteFooter />
     </div>
+  );
+}
+
+function SiteFooter() {
+  return (
+    <footer className="site-footer">
+      <p className="footer-brand">
+        Digital Alchemy Software · made by Desmond Baker Jr.
+      </p>
+      <p className="footer-links">
+        <a
+          href="https://chicago-tech-week-map-2026.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Original CTW Map
+        </a>
+        <span aria-hidden="true">·</span>
+        <span>
+          Nod to{" "}
+          <a
+            href="https://www.linkedin.com/in/monicapara/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Monica
+          </a>{" "}
+          &amp;{" "}
+          <a
+            href="https://www.linkedin.com/in/zalak-zecco-patel-3a618890/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Zecco
+          </a>
+        </span>
+      </p>
+    </footer>
   );
 }
 
