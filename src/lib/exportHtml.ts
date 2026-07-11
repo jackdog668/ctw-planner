@@ -1,3 +1,4 @@
+import { dataWarning, effectiveSlot, formatTime, orderByTime } from "./times";
 import type { EventItem, Plan } from "../types";
 import { DAYS, SLOTS } from "../types";
 import { getTheme, themeCssBlock } from "./themes";
@@ -22,7 +23,11 @@ export function buildItineraryHtml(plan: Plan, events: EventItem[]): string {
     if (!dayEvents.length) return "";
 
     const slots = SLOTS.map((slot) => {
-      const items = dayEvents.filter((e) => e.slot === slot.key);
+      // Group by the real scraped time, matching what the app shows. Using the
+      // raw `slot` field here put 9am events under "Afternoon".
+      const items = orderByTime(
+        dayEvents.filter((e) => effectiveSlot(e) === slot.key)
+      );
       if (!items.length) return "";
       const conflict =
         items.length > 1
@@ -31,12 +36,22 @@ export function buildItineraryHtml(plan: Plan, events: EventItem[]): string {
       const cards = items
         .map((e) => {
           const note = plan.notes[String(e.id)]?.trim();
+          const start = formatTime(e.startTime);
+          const end = formatTime(e.endTime);
+          const time = start ? `${start}${end ? `–${end}` : ""}` : "";
+          const warning = dataWarning(e);
           return `
           <article class="card">
             <div class="emoji">${esc(e.emoji || "•")}</div>
             <div>
+              ${time ? `<p class="time">${esc(time)}</p>` : ""}
               <h3>${esc(e.title)}</h3>
-              <p class="meta">${esc(e.location || "Venue TBA")}</p>
+              <p class="meta">${esc(e.venueName || e.location || "Venue TBA")}</p>
+              ${
+                warning
+                  ? `<p class="warn">⚠️ ${esc(warning)} — check the event page</p>`
+                  : ""
+              }
               ${note ? `<p class="note">${esc(note)}</p>` : ""}
               <a href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">Open event</a>
             </div>
@@ -146,10 +161,23 @@ ${themeCssBlock(theme)}
     font-size: 1.1rem;
     font-weight: 900;
   }
+  .time {
+    margin: 0 0 2px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+  }
   .meta {
     margin: 0 0 8px;
     color: var(--mute);
     font-size: 13px;
+  }
+  .warn {
+    margin: 0 0 8px;
+    color: var(--mute);
+    font-size: 12px;
+    font-weight: 800;
   }
   .note {
     margin: 0 0 8px;
@@ -188,50 +216,79 @@ ${themeCssBlock(theme)}
 
 export function downloadItinerary(plan: Plan, events: EventItem[]) {
   const html = buildItineraryHtml(plan, events);
-  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
   const slug = (plan.name || "itinerary")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+  downloadBlob(
+    new Blob([html], { type: "text/html;charset=utf-8" }),
+    `ctw-2026-${slug || "itinerary"}.html`
+  );
+}
+
+/**
+ * Anchor must be in the document for Firefox to honour the click, and the
+ * object URL must outlive the click — revoking it synchronously can cancel the
+ * download before the browser has read the blob.
+ */
+export function downloadBlob(blob: Blob, filename: string) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
   a.href = url;
-  a.download = `ctw-2026-${slug || "itinerary"}.html`;
+  a.download = filename;
+  a.style.display = "none";
+  document.body.appendChild(a);
   a.click();
-  URL.revokeObjectURL(url);
+  setTimeout(() => {
+    a.remove();
+    URL.revokeObjectURL(url);
+  }, 1000);
 }
 
 export function printItinerary(plan: Plan, events: EventItem[]) {
   const html = buildItineraryHtml(plan, events);
+
   const frame = document.createElement("iframe");
+  // A 0x0 iframe prints blank in Chrome — the print document is laid out against
+  // the frame's box, so it needs real page dimensions. Park it offscreen at
+  // roughly A4 @96dpi rather than collapsing it.
+  frame.setAttribute("aria-hidden", "true");
   frame.style.position = "fixed";
-  frame.style.right = "0";
-  frame.style.bottom = "0";
-  frame.style.width = "0";
-  frame.style.height = "0";
+  frame.style.left = "-10000px";
+  frame.style.top = "0";
+  frame.style.width = "794px";
+  frame.style.height = "1123px";
   frame.style.border = "0";
+
+  // onload and the safety-net timeout could both fire, which opened the dialog
+  // twice and tore the iframe out from under it. Latch so only the first wins.
+  let printed = false;
+  const printOnce = () => {
+    if (printed) return;
+    printed = true;
+    const win = frame.contentWindow;
+    if (!win) {
+      frame.remove();
+      return;
+    }
+    // Don't rip the frame out while the preview is still reading it.
+    let done = false;
+    const cleanup = () => {
+      if (done) return;
+      done = true;
+      setTimeout(() => frame.remove(), 500);
+    };
+    win.addEventListener("afterprint", cleanup, { once: true });
+    win.focus();
+    win.print();
+    // Chrome's preview is non-blocking, and afterprint doesn't always fire.
+    // Fall back to a generous timer so we never leave the frame behind.
+    setTimeout(cleanup, 60000);
+  };
+
+  frame.onload = printOnce;
+  // srcdoc fires load reliably; document.write() often doesn't.
+  frame.srcdoc = html;
   document.body.appendChild(frame);
-  const doc = frame.contentDocument;
-  if (!doc) {
-    document.body.removeChild(frame);
-    return;
-  }
-  doc.open();
-  doc.write(html);
-  doc.close();
-  const cleanup = () => {
-    setTimeout(() => {
-      if (frame.parentNode) document.body.removeChild(frame);
-    }, 500);
-  };
-  frame.onload = () => {
-    frame.contentWindow?.focus();
-    frame.contentWindow?.print();
-    cleanup();
-  };
-  setTimeout(() => {
-    frame.contentWindow?.focus();
-    frame.contentWindow?.print();
-    cleanup();
-  }, 400);
+  setTimeout(printOnce, 1500);
 }

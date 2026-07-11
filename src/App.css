@@ -978,3 +978,136 @@ h1 {
     font-size: 0.82rem;
   }
 }
+
+/* --- Real event times ------------------------------------------------- */
+
+.event-time {
+  font-size: 0.72rem;
+  font-weight: 900;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Shown whenever a time or venue isn't confirmed, so the user knows to
+   verify on the event page rather than trusting a guess. */
+.data-warning {
+  margin: 6px 0 0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--mute);
+  line-height: 1.35;
+}
+
+.data-warning a {
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+/* --- Filter match mode (Any / All) ------------------------------------ */
+
+.match-toggle,
+.transport-modes {
+  display: inline-flex;
+  gap: 4px;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--mute);
+  cursor: pointer;
+}
+
+.chip.on {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* --- Transport bar ---------------------------------------------------- */
+
+.transport-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.transport-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--mute);
+}
+
+.transport-note {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--mute);
+}
+
+/* --- Travel leg between two saved events ------------------------------ */
+
+.plan-stop {
+  display: grid;
+  gap: 10px;
+}
+
+.travel-leg {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 4px 16px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--line);
+  background: var(--panel);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--mute);
+}
+
+.travel-leg a {
+  margin-left: auto;
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.travel-leg.fine {
+  color: var(--ink);
+}
+
+.travel-leg.tight {
+  background: var(--saved);
+  border-style: solid;
+  color: var(--ink);
+}
+
+/* Never a flat "you won't make it" — always framed as how late you'd be. */
+.travel-leg.late {
+  background: var(--saved);
+  border: 1px solid var(--star);
+  color: var(--ink);
+}
+
+.travel-leg.muted {
+  font-weight: 700;
+}
