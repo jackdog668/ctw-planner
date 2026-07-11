@@ -5,6 +5,9 @@ export type Slot = "morning" | "afternoon" | "evening";
 export type DayKey = "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat";
 export type { ThemeId };
 
+export type Confidence = "confirmed" | "approximate" | "unknown";
+export type TravelMode = "walking" | "bicycling" | "transit" | "driving";
+
 export type EventItem = {
   id: number;
   title: string;
@@ -21,6 +24,17 @@ export type EventItem = {
   founderBoost: number;
   tier: string | null;
   why: string | null;
+
+  // Added by the event-times overlay (scripts/enrich-times.mjs). All optional:
+  // an event with no overlay entry behaves exactly as it did before.
+  startTime?: string | null;
+  endTime?: string | null;
+  venueName?: string | null;
+  lat?: number | null;
+  lon?: number | null;
+  timeConfidence?: Confidence;
+  venueConfidence?: Confidence | "virtual";
+  virtual?: boolean;
 };
 
 export type Plan = {
@@ -29,6 +43,8 @@ export type Plan = {
   savedIds: number[];
   theme: ThemeId;
   notes: Record<string, string>;
+  /** Optional so share links created before this feature still decode. */
+  transport?: TravelMode;
 };
 
 export const DAYS: { key: DayKey; date: string; label: string }[] = [

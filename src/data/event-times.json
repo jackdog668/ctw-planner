@@ -1,0 +1,734 @@
+{
+  "1": {
+    "startTime": "2026-07-20T00:00:00-05:00",
+    "endTime": "2026-07-22T18:00:00-05:00",
+    "venueName": "Convene, Willis Tower",
+    "lat": 41.878712,
+    "lon": -87.635954,
+    "timeConfidence": "approximate",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "2": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": null,
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "unknown",
+    "venueConfidence": "unknown"
+  },
+  "3": {
+    "startTime": "2026-07-20T08:00:00-05:00",
+    "endTime": "2026-07-20T22:00:00-05:00",
+    "venueName": "CineCity Studios Chicago",
+    "lat": 41.8626371,
+    "lon": -87.68695199999999,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "4": {
+    "startTime": "2026-07-20T09:00:00-05:00",
+    "endTime": "2026-07-23T18:00:00-05:00",
+    "venueName": "TeamWorking by TechNexus",
+    "lat": 41.8826202,
+    "lon": -87.6372731,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "5": {
+    "startTime": "2026-07-20T11:00:00-05:00",
+    "endTime": "2026-07-20T18:00:00-05:00",
+    "venueName": "Gleacher Center, Room 621",
+    "lat": 41.889717,
+    "lon": -87.6219388,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "6": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "mHUB",
+    "lat": 41.886544,
+    "lon": -87.667565,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "7": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Kennedy-King College",
+    "lat": 41.778533,
+    "lon": -87.642779,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "8": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Skyline Pitch Chicago (Willis Tower)",
+    "lat": 41.878712,
+    "lon": -87.635954,
+    "timeConfidence": "unknown",
+    "venueConfidence": "approximate",
+    "venueSource": "curated"
+  },
+  "9": {
+    "startTime": "2026-07-20T18:00:00-05:00",
+    "endTime": "2026-07-20T21:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": 41.889717,
+    "lon": -87.6219388,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "scraped-venue"
+  },
+  "10": {
+    "startTime": "2026-07-20T18:30:00-05:00",
+    "endTime": "2026-07-20T21:30:00-05:00",
+    "venueName": "Three Cities Social Club - River North",
+    "lat": 41.892543499999995,
+    "lon": -87.63675529999999,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "11": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": null,
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "unknown",
+    "venueConfidence": "unknown"
+  },
+  "12": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Soho House Chicago",
+    "lat": 41.883841,
+    "lon": -87.648253,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "13": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": null,
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "unknown",
+    "venueConfidence": "unknown"
+  },
+  "14": {
+    "startTime": "2026-07-21T08:30:00-05:00",
+    "endTime": "2026-07-21T11:30:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate"
+  },
+  "15": {
+    "startTime": "2026-07-21T09:00:00-05:00",
+    "endTime": "2026-07-21T11:00:00-05:00",
+    "venueName": "2031 W Fulton St",
+    "lat": 41.8865148,
+    "lon": -87.6782511,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "16": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Aon Center",
+    "lat": 41.885307,
+    "lon": -87.621534,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "17": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Chicago State University",
+    "lat": 41.717006,
+    "lon": -87.609547,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "18": {
+    "startTime": "2026-07-21T09:00:00-05:00",
+    "endTime": "2026-07-21T10:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": 41.887201,
+    "lon": -87.627157,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate",
+    "venueSource": "curated"
+  },
+  "19": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": null,
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "unknown",
+    "venueConfidence": "virtual",
+    "virtual": true
+  },
+  "20": {
+    "startTime": "2026-07-21T13:00:00-05:00",
+    "endTime": "2026-07-21T16:00:00-05:00",
+    "venueName": "Fabrik Chicago",
+    "lat": 41.890204999999995,
+    "lon": -87.6344556,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "21": {
+    "startTime": "2026-07-21T05:00:00-05:00",
+    "endTime": null,
+    "venueName": "West Loop Gate",
+    "lat": 41.889717,
+    "lon": -87.6219388,
+    "timeConfidence": "approximate",
+    "venueConfidence": "confirmed",
+    "venueSource": "scraped-venue"
+  },
+  "22": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Three Cities Social Club (Wicker Park)",
+    "lat": 41.909695,
+    "lon": -87.676105,
+    "timeConfidence": "unknown",
+    "venueConfidence": "approximate",
+    "venueSource": "curated"
+  },
+  "23": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "MATTER",
+    "lat": 41.888409599999996,
+    "lon": -87.6354498,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "scraped-venue"
+  },
+  "24": {
+    "startTime": "2026-07-21T15:00:00-05:00",
+    "endTime": "2026-07-21T20:00:00-05:00",
+    "venueName": "Vault Gallerie",
+    "lat": 41.8545667,
+    "lon": -87.6633787,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "25": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Gary Comer Youth Center",
+    "lat": 41.764076,
+    "lon": -87.602358,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "26": {
+    "startTime": "2026-07-21T17:00:00-05:00",
+    "endTime": "2026-07-21T19:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate"
+  },
+  "27": {
+    "startTime": "2026-07-20T19:00:00-05:00",
+    "endTime": "2026-07-20T19:00:00-05:00",
+    "venueName": "TBD",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "unknown"
+  },
+  "28": {
+    "startTime": "2026-07-21T17:00:00-05:00",
+    "endTime": "2026-07-21T19:30:00-05:00",
+    "venueName": "Norton Rose Fulbright",
+    "lat": 41.883842,
+    "lon": -87.636846,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate",
+    "venueSource": "curated"
+  },
+  "29": {
+    "startTime": "2026-07-21T16:30:00-05:00",
+    "endTime": "2026-07-21T18:30:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate"
+  },
+  "30": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": null,
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "unknown",
+    "venueConfidence": "unknown"
+  },
+  "31": {
+    "startTime": "2026-07-21T17:00:00-05:00",
+    "endTime": "2026-07-21T21:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": 41.889717,
+    "lon": -87.6219388,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "scraped-venue"
+  },
+  "32": {
+    "startTime": "2026-07-21T17:30:00-05:00",
+    "endTime": "2026-07-21T20:30:00-05:00",
+    "venueName": "Chicago, Illinois",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate"
+  },
+  "33": {
+    "startTime": "2026-07-21T17:30:00-05:00",
+    "endTime": null,
+    "venueName": "Together Chicago Offices",
+    "lat": 41.883151,
+    "lon": -87.667439,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "34": {
+    "startTime": "2026-07-21T17:30:00-05:00",
+    "endTime": "2026-07-21T19:30:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": 41.886451,
+    "lon": -87.632006,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "35": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": null,
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "unknown",
+    "venueConfidence": "unknown"
+  },
+  "36": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Union League Club of Chicago",
+    "lat": 41.877839,
+    "lon": -87.630039,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "37": {
+    "startTime": "2026-07-21T17:30:00-05:00",
+    "endTime": "2026-07-21T20:00:00-05:00",
+    "venueName": "200 E Randolph St",
+    "lat": 41.885307,
+    "lon": -87.621534,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "38": {
+    "startTime": "2026-07-21T18:00:00-05:00",
+    "endTime": "2026-07-21T20:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": 41.886544,
+    "lon": -87.667565,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "39": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "TeamWorking by TechNexus",
+    "lat": 41.8826202,
+    "lon": -87.6372731,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "scraped-venue"
+  },
+  "40": {
+    "startTime": "2026-07-22T09:00:00-05:00",
+    "endTime": "2026-07-22T10:00:00-05:00",
+    "venueName": "TeamWorking by TechNexus",
+    "lat": 41.8826202,
+    "lon": -87.6372731,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "41": {
+    "startTime": "2026-07-22T10:00:00-05:00",
+    "endTime": "2026-07-23T20:00:00-05:00",
+    "venueName": "4245 N Knox Ave",
+    "lat": 41.958867,
+    "lon": -87.744003,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "42": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "200 N LaSalle St",
+    "lat": 41.886099,
+    "lon": -87.633085,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "43": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": null,
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "unknown",
+    "venueConfidence": "virtual",
+    "virtual": true
+  },
+  "44": {
+    "startTime": "2026-07-22T13:00:00-05:00",
+    "endTime": "2026-07-22T18:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate"
+  },
+  "45": {
+    "startTime": "2026-07-22T14:30:00-05:00",
+    "endTime": "2026-07-22T19:30:00-05:00",
+    "venueName": "TeamWorking by TechNexus",
+    "lat": 41.8826202,
+    "lon": -87.6372731,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "46": {
+    "startTime": "2026-07-22T16:00:00-05:00",
+    "endTime": "2026-07-22T19:00:00-05:00",
+    "venueName": "The Metropolitan",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "unknown"
+  },
+  "47": {
+    "startTime": "2026-07-22T15:30:00-05:00",
+    "endTime": "2026-07-22T17:30:00-05:00",
+    "venueName": "MATTER",
+    "lat": 41.888409599999996,
+    "lon": -87.6354498,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "48": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": null,
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "unknown",
+    "venueConfidence": "unknown"
+  },
+  "49": {
+    "startTime": "2026-07-22T17:30:00-05:00",
+    "endTime": "2026-07-22T19:30:00-05:00",
+    "venueName": "Alliance Française de Chicago",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "unknown"
+  },
+  "50": {
+    "startTime": "2026-07-22T17:30:00-05:00",
+    "endTime": "2026-07-22T20:00:00-05:00",
+    "venueName": "TeamWorking by TechNexus",
+    "lat": 41.8826202,
+    "lon": -87.6372731,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "51": {
+    "startTime": "2026-07-22T17:30:00-05:00",
+    "endTime": "2026-07-22T21:30:00-05:00",
+    "venueName": "Centre Court Productions",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "unknown"
+  },
+  "52": {
+    "startTime": "2026-07-22T17:30:00-05:00",
+    "endTime": "2026-07-22T19:00:00-05:00",
+    "venueName": "Fabrik Chicago",
+    "lat": 41.890204999999995,
+    "lon": -87.6344556,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "53": {
+    "startTime": "2026-07-22T17:30:00-05:00",
+    "endTime": "2026-07-22T19:30:00-05:00",
+    "venueName": "20 N Wacker Dr suite 1000",
+    "lat": 41.889717,
+    "lon": -87.6219388,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "scraped-venue"
+  },
+  "54": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Bureau Gravity, Aurora, IL",
+    "lat": 41.75717,
+    "lon": -88.314754,
+    "timeConfidence": "unknown",
+    "venueConfidence": "approximate",
+    "venueSource": "curated"
+  },
+  "55": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Gleacher Center, Room 621",
+    "lat": 41.889717,
+    "lon": -87.6219388,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "scraped-venue"
+  },
+  "56": {
+    "startTime": "2026-07-22T20:30:00-05:00",
+    "endTime": "2026-07-22T23:30:00-05:00",
+    "venueName": "Mastro's Steakhouse - Chicago",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "unknown"
+  },
+  "57": {
+    "startTime": "2026-07-23T18:00:00-05:00",
+    "endTime": "2026-07-23T21:00:00-05:00",
+    "venueName": "Hoste",
+    "lat": 41.859431,
+    "lon": -87.67291709999999,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "58": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Willis Tower - Convene",
+    "lat": 41.878712,
+    "lon": -87.635954,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "59": {
+    "startTime": "2026-07-23T10:00:00-05:00",
+    "endTime": null,
+    "venueName": "PCs for People",
+    "lat": 41.710875,
+    "lon": -87.758111,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate",
+    "venueSource": "curated"
+  },
+  "60": {
+    "startTime": "2026-07-23T14:00:00-05:00",
+    "endTime": null,
+    "venueName": "PCs for People",
+    "lat": 41.710875,
+    "lon": -87.758111,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate",
+    "venueSource": "curated"
+  },
+  "61": {
+    "startTime": "2026-07-23T14:00:00-05:00",
+    "endTime": "2026-07-23T18:00:00-05:00",
+    "venueName": "Fabrik Chicago",
+    "lat": 41.890204999999995,
+    "lon": -87.6344556,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "62": {
+    "startTime": "2026-07-23T14:10:00-05:00",
+    "endTime": "2026-07-23T15:20:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": 41.889717,
+    "lon": -87.6219388,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "scraped-venue"
+  },
+  "63": {
+    "startTime": "2026-07-23T15:00:00-05:00",
+    "endTime": "2026-07-23T21:00:00-05:00",
+    "venueName": "70 W Madison St",
+    "lat": 41.8823304,
+    "lon": -87.6301292,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "64": {
+    "startTime": "2026-07-23T14:00:00-05:00",
+    "endTime": "2026-07-23T17:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": 41.877111,
+    "lon": -87.639971,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "65": {
+    "startTime": "2026-07-23T17:00:00-05:00",
+    "endTime": "2026-07-23T19:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": 41.882703,
+    "lon": -87.637465,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "66": {
+    "startTime": "2026-07-23T18:00:00-05:00",
+    "endTime": "2026-07-23T21:30:00-05:00",
+    "venueName": "TeamWorking by TechNexus",
+    "lat": 41.8826202,
+    "lon": -87.6372731,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "67": {
+    "startTime": "2026-07-23T17:30:00-05:00",
+    "endTime": "2026-07-23T21:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate"
+  },
+  "68": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "1701 W 13th St",
+    "lat": 41.864909,
+    "lon": -87.669149,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "69": {
+    "startTime": "2026-07-23T18:00:00-05:00",
+    "endTime": "2026-07-23T20:00:00-05:00",
+    "venueName": "Stripe Office Chicago",
+    "lat": 41.889021,
+    "lon": -87.630104,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "70": {
+    "startTime": "2026-07-23T18:00:00-05:00",
+    "endTime": "2026-07-23T20:00:00-05:00",
+    "venueName": "Workbox Chicago - River North",
+    "lat": 41.8940748,
+    "lon": -87.63606419999999,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "71": {
+    "startTime": "2026-07-23T18:00:00-05:00",
+    "endTime": "2026-07-23T20:00:00-05:00",
+    "venueName": "Three Cities Social Club - River North",
+    "lat": 41.892543499999995,
+    "lon": -87.63675529999999,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "72": {
+    "startTime": "2026-07-24T09:00:00-05:00",
+    "endTime": "2026-07-24T10:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate"
+  },
+  "73": {
+    "startTime": "2026-07-24T11:00:00-05:00",
+    "endTime": "2026-07-24T13:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": null,
+    "lon": null,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "approximate"
+  },
+  "74": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "Microsoft Tech Center, Aon Center",
+    "lat": 41.885307,
+    "lon": -87.621534,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  },
+  "75": {
+    "startTime": "2026-07-24T15:00:00-05:00",
+    "endTime": "2026-07-24T18:00:00-05:00",
+    "venueName": "Chicago, IL",
+    "lat": 41.889717,
+    "lon": -87.6219388,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed",
+    "venueSource": "scraped-venue"
+  },
+  "76": {
+    "startTime": "2026-07-24T17:00:00-05:00",
+    "endTime": "2026-07-24T19:30:00-05:00",
+    "venueName": "Polsky Exchange North",
+    "lat": 41.7998915,
+    "lon": -87.58957649999999,
+    "timeConfidence": "confirmed",
+    "venueConfidence": "confirmed"
+  },
+  "77": {
+    "startTime": null,
+    "endTime": null,
+    "venueName": "2219 W Cortez St",
+    "lat": 41.900149,
+    "lon": -87.682888,
+    "timeConfidence": "unknown",
+    "venueConfidence": "confirmed",
+    "venueSource": "curated"
+  }
+}

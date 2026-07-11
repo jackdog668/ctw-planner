@@ -5,6 +5,7 @@ import { downloadIcs } from "./lib/ics";
 import {
   clearPlanQuery,
   decodePlan,
+  DEFAULT_TRANSPORT,
   emptyPlan,
   extractPlanToken,
   loadPlan,
@@ -21,7 +22,17 @@ import {
   themeCssVars,
   type ThemeId,
 } from "./lib/themes";
+import {
+  dataWarning,
+  effectiveSlot,
+  formatTime,
+  orderByTime,
+  overlaps,
+  startMinutes,
+  withTimes,
+} from "./lib/times";
 import { defaultDayKey } from "./lib/today";
+import { travelLeg, TRAVEL_MODES, type TravelLeg } from "./lib/travel";
 import {
   DAYS,
   LANES,
@@ -31,12 +42,16 @@ import {
   type Lane,
   type Plan,
   type Slot,
+  type TravelMode,
 } from "./types";
 import "./App.css";
 
-const events = eventsData as EventItem[];
+// Real times + venue coordinates are layered on from the event-times overlay.
+// events.json itself is untouched; an event with no overlay entry is unchanged.
+const events = withTimes(eventsData as EventItem[]);
 
 type Tab = "browse" | "week" | "plan";
+type FilterMode = "any" | "all";
 
 export default function App() {
   const [plan, setPlan] = useState<Plan>(() => planFromUrl() || loadPlan());
@@ -48,7 +63,9 @@ export default function App() {
   });
   const [day, setDay] = useState<DayKey>(() => defaultDayKey());
   const [tab, setTab] = useState<Tab>("browse");
-  const [vibeFilter, setVibeFilter] = useState<Lane | "all">("all");
+  // Empty set = "all vibes". Selecting one lane reproduces the old behavior.
+  const [vibeFilter, setVibeFilter] = useState<Set<Lane>>(() => new Set());
+  const [filterMode, setFilterMode] = useState<FilterMode>("any");
   const [query, setQuery] = useState("");
   const [hideVague, setHideVague] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -126,20 +143,41 @@ export default function App() {
     setTab("plan");
   }
 
+  function toggleVibe(lane: Lane) {
+    setVibeFilter((prev) => {
+      const next = new Set(prev);
+      if (next.has(lane)) next.delete(lane);
+      else next.add(lane);
+      return next;
+    });
+  }
+
+  function setTransport(transport: TravelMode) {
+    setPlan((p) => ({ ...p, transport }));
+  }
+
   const filteredEvents = useMemo(() => {
     const q = query.trim().toLowerCase();
+    const lanes = [...vibeFilter];
     return events.filter((e) => {
-      if (vibeFilter !== "all" && !e.tags.includes(vibeFilter)) return false;
+      if (lanes.length) {
+        const matched =
+          filterMode === "all"
+            ? lanes.every((l) => e.tags.includes(l))
+            : lanes.some((l) => e.tags.includes(l));
+        if (!matched) return false;
+      }
       if (hideVague && !e.hasRealVenue) return false;
       if (!q) return true;
       return (
         e.title.toLowerCase().includes(q) ||
         e.location.toLowerCase().includes(q) ||
+        (e.venueName?.toLowerCase().includes(q) ?? false) ||
         e.vibe.toLowerCase().includes(q) ||
         e.tags.some((t) => t.includes(q))
       );
     });
-  }, [vibeFilter, hideVague, query]);
+  }, [vibeFilter, filterMode, hideVague, query]);
 
   const rankedDay = useMemo(() => {
     const dayEvents = filteredEvents.filter((e) => e.weekday === day);
@@ -167,7 +205,9 @@ export default function App() {
     const map = new Map<string, EventItem[]>();
     for (const e of savedEvents) {
       if (!e.weekday) continue;
-      const key = `${e.weekday}:${e.slot}`;
+      // Group by the *effective* slot — the real scraped time wins over the
+      // original hand-tagged one, which defaulted almost everything to afternoon.
+      const key = `${e.weekday}:${effectiveSlot(e)}`;
       const list = map.get(key) || [];
       list.push(e);
       map.set(key, list);
@@ -388,8 +428,8 @@ export default function App() {
           <div className="filter-row">
             <button
               type="button"
-              className={vibeFilter === "all" ? "pill active" : "pill"}
-              onClick={() => setVibeFilter("all")}
+              className={vibeFilter.size === 0 ? "pill active" : "pill"}
+              onClick={() => setVibeFilter(new Set())}
             >
               All vibes
             </button>
@@ -397,12 +437,31 @@ export default function App() {
               <button
                 key={l.key}
                 type="button"
-                className={vibeFilter === l.key ? "pill active" : "pill"}
-                onClick={() => setVibeFilter(l.key)}
+                className={vibeFilter.has(l.key) ? "pill active" : "pill"}
+                onClick={() => toggleVibe(l.key)}
+                aria-pressed={vibeFilter.has(l.key)}
               >
                 {l.label}
               </button>
             ))}
+            {vibeFilter.size > 1 && (
+              <div className="match-toggle" role="group" aria-label="Match mode">
+                <button
+                  type="button"
+                  className={filterMode === "any" ? "chip on" : "chip"}
+                  onClick={() => setFilterMode("any")}
+                >
+                  Any
+                </button>
+                <button
+                  type="button"
+                  className={filterMode === "all" ? "chip on" : "chip"}
+                  onClick={() => setFilterMode("all")}
+                >
+                  All
+                </button>
+              </div>
+            )}
           </div>
         </>
       )}
@@ -464,6 +523,7 @@ export default function App() {
           onIcs={() => downloadIcs(plan, events)}
           onPrint={() => printItinerary(plan, events)}
           onSeed={seedFounderPicks}
+          onTransport={setTransport}
         />
       )}
       <SiteFooter />
@@ -641,7 +701,7 @@ function Timeline({
   return (
     <div className="timeline">
       {SLOTS.map((slot) => {
-        const items = events.filter((e) => e.slot === slot.key);
+        const items = events.filter((e) => effectiveSlot(e) === slot.key);
         return (
           <section key={slot.key} className="slot-block">
             <header className="slot-head">
@@ -716,7 +776,7 @@ function WeekView({
           {dayEvents.length ? (
             <div className="week-slots">
               {SLOTS.map((slot) => {
-                const items = dayEvents.filter((e) => e.slot === slot.key);
+                const items = dayEvents.filter((e) => effectiveSlot(e) === slot.key);
                 if (!items.length) return null;
                 return (
                   <div key={slot.key} className="week-slot">
@@ -763,6 +823,7 @@ function MyPlan({
   onIcs,
   onPrint,
   onSeed,
+  onTransport,
 }: {
   events: EventItem[];
   plan: Plan;
@@ -780,7 +841,10 @@ function MyPlan({
   onIcs: () => void;
   onPrint: () => void;
   onSeed: () => void;
+  onTransport: (mode: TravelMode) => void;
 }) {
+  const transport = plan.transport ?? DEFAULT_TRANSPORT;
+
   if (!events.length) {
     return (
       <div className="empty-plan">
@@ -811,6 +875,26 @@ function MyPlan({
             Export HTML
           </button>
         </div>
+      </div>
+
+      <div className="transport-bar">
+        <span className="transport-label">Getting around by</span>
+        <div className="transport-modes" role="group" aria-label="Transport mode">
+          {TRAVEL_MODES.map((m) => (
+            <button
+              key={m.key}
+              type="button"
+              className={transport === m.key ? "chip on" : "chip"}
+              onClick={() => onTransport(m.key)}
+              aria-pressed={transport === m.key}
+            >
+              <span aria-hidden="true">{m.emoji}</span> {m.label}
+            </button>
+          ))}
+        </div>
+        <p className="transport-note">
+          Travel times are rough estimates — tap “Directions” on any hop for the real route.
+        </p>
       </div>
 
       {conflicts.length > 0 && (
@@ -868,7 +952,7 @@ function MyPlan({
       </section>
 
       {DAYS.map((day) => {
-        const dayEvents = events.filter((e) => e.weekday === day.key);
+        const dayEvents = orderByTime(events.filter((e) => e.weekday === day.key));
         if (!dayEvents.length) return null;
         return (
           <section key={day.key} className="slot-block">
@@ -879,26 +963,70 @@ function MyPlan({
               <span>{dayEvents.length}</span>
             </header>
             <div className="cards">
-              {SLOTS.flatMap((slot) => {
-                const slotEvents = dayEvents.filter((e) => e.slot === slot.key);
-                const crowded = slotEvents.length > 1;
-                return slotEvents.map((event) => (
-                  <EventCard
-                    key={event.id}
-                    event={event}
-                    rankLabel={slot.label}
-                    saved
-                    conflict={crowded}
-                    note={plan.notes[String(event.id)] || ""}
-                    onNote={(value) => onNote(event.id, value)}
-                    onToggle={() => onToggle(event.id)}
-                  />
-                ));
+              {dayEvents.map((event, i) => {
+                const next = dayEvents[i + 1];
+                // Clashes with any other saved event that day: by the clock when
+                // we know it, otherwise by slot for events with no real time.
+                const clash = dayEvents.some(
+                  (other) =>
+                    other.id !== event.id &&
+                    (startMinutes(event) !== null && startMinutes(other) !== null
+                      ? overlaps(event, other)
+                      : effectiveSlot(other) === effectiveSlot(event))
+                );
+                return (
+                  <div key={event.id} className="plan-stop">
+                    <EventCard
+                      event={event}
+                      rankLabel={SLOTS.find((s) => s.key === effectiveSlot(event))?.label}
+                      saved
+                      conflict={clash}
+                      note={plan.notes[String(event.id)] || ""}
+                      onNote={(value) => onNote(event.id, value)}
+                      onToggle={() => onToggle(event.id)}
+                    />
+                    {next && (
+                      <TravelConnector leg={travelLeg(event, next, transport)} />
+                    )}
+                  </div>
+                );
               })}
             </div>
           </section>
         );
       })}
+    </div>
+  );
+}
+
+/** The hop between two consecutive saved events. */
+function TravelConnector({ leg }: { leg: TravelLeg }) {
+  if (leg.kind === "virtual" || leg.kind === "unknown") {
+    return (
+      <div className="travel-leg muted">
+        <span aria-hidden="true">↓</span>
+        <span>{leg.message}</span>
+      </div>
+    );
+  }
+
+  if (leg.kind === "overlap") {
+    return (
+      <div className="travel-leg late">
+        <span aria-hidden="true">⚠️</span>
+        <span>{leg.message}</span>
+      </div>
+    );
+  }
+
+  const status = leg.kind === "verdict" ? leg.status : "fine";
+  return (
+    <div className={`travel-leg ${status}`}>
+      <span aria-hidden="true">↓</span>
+      <span>{leg.text}</span>
+      <a href={leg.url} target="_blank" rel="noopener noreferrer">
+        Directions
+      </a>
     </div>
   );
 }
@@ -924,6 +1052,10 @@ function EventCard({
   note?: string;
   onNote?: (value: string) => void;
 }) {
+  const start = formatTime(event.startTime);
+  const end = formatTime(event.endTime);
+  const warning = dataWarning(event);
+
   return (
     <article
       className={[
@@ -938,16 +1070,30 @@ function EventCard({
       <div className="event-main">
         <div className="event-top">
           <span className="emoji">{event.emoji || "•"}</span>
+          {start && (
+            <span className="event-time">
+              {start}
+              {end ? `–${end}` : ""}
+            </span>
+          )}
           {rankLabel && <span className="rank">{rankLabel}</span>}
           {typeof rank === "number" && !rankLabel && (
             <span className="rank">#{rank}</span>
           )}
           {event.tier && <span className={`tier ${event.tier}`}>{event.tier}</span>}
           {conflict && <span className="tier must">overlap</span>}
-          {!event.hasRealVenue && <span className="rank">venue tba</span>}
+          {event.virtual && <span className="rank">virtual</span>}
         </div>
         <h3>{event.title}</h3>
-        <p className="loc">{event.location || "Venue TBA"}</p>
+        <p className="loc">{event.venueName || event.location || "Venue TBA"}</p>
+        {warning && (
+          <p className="data-warning">
+            <span aria-hidden="true">⚠️</span> {warning} —{" "}
+            <a href={event.url} target="_blank" rel="noopener noreferrer">
+              check the event page
+            </a>
+          </p>
+        )}
         {!compact && (
           <>
             <div className="tag-row">

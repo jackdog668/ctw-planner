@@ -1,8 +1,15 @@
-import type { Lane, Plan } from "../types";
+import type { Lane, Plan, TravelMode } from "../types";
 import { DEFAULT_THEME, isThemeId } from "./themes";
 
 const STORAGE_KEY = "ctw-planner-v1";
 const READY_KEY = "ctw-planner-ready-v1";
+
+const TRAVEL_MODES: TravelMode[] = ["walking", "bicycling", "transit", "driving"];
+export const DEFAULT_TRANSPORT: TravelMode = "transit";
+
+function isTravelMode(value: unknown): value is TravelMode {
+  return typeof value === "string" && TRAVEL_MODES.includes(value as TravelMode);
+}
 
 const DEFAULT_PLAN: Plan = {
   name: "",
@@ -10,6 +17,7 @@ const DEFAULT_PLAN: Plan = {
   savedIds: [],
   theme: DEFAULT_THEME,
   notes: {},
+  transport: DEFAULT_TRANSPORT,
 };
 
 export function emptyPlan(): Plan {
@@ -39,6 +47,8 @@ function normalizePlan(parsed: Partial<Plan> & { notes?: unknown }): Plan {
     savedIds: Array.isArray(parsed.savedIds) ? parsed.savedIds : [],
     theme: isThemeId(parsed.theme) ? parsed.theme : DEFAULT_THEME,
     notes: normalizeNotes(parsed.notes),
+    // Absent on plans saved before travel mode existed — fall back to the default.
+    transport: isTravelMode(parsed.transport) ? parsed.transport : DEFAULT_TRANSPORT,
   };
 }
 
@@ -83,6 +93,7 @@ export function encodePlan(plan: Plan): string {
     s: plan.savedIds,
     t: plan.theme,
     o: notesEntries.length ? Object.fromEntries(notesEntries) : undefined,
+    tp: plan.transport,
   };
   return btoa(unescape(encodeURIComponent(JSON.stringify(payload))))
     .replace(/\+/g, "-")
@@ -100,6 +111,7 @@ export function decodePlan(token: string): Plan | null {
       s?: number[];
       t?: string;
       o?: Record<string, string>;
+      tp?: string;
     };
     return normalizePlan({
       name: payload.n || "",
@@ -107,6 +119,8 @@ export function decodePlan(token: string): Plan | null {
       savedIds: payload.s || [],
       theme: isThemeId(payload.t) ? payload.t : DEFAULT_THEME,
       notes: payload.o || {},
+      // Older links have no `tp` — normalizePlan supplies the default.
+      transport: isTravelMode(payload.tp) ? payload.tp : DEFAULT_TRANSPORT,
     });
   } catch {
     return null;

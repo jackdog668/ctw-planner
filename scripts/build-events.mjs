@@ -46,14 +46,36 @@ function splitCsvLine(line) {
   return row;
 }
 
-const csv = fs.readFileSync(
-  "C:/Users/ulilj/Projects/chicago-tech-week-events-2026.csv",
-  "utf8"
-);
-const short = fs.readFileSync(
-  "C:/Users/ulilj/Projects/chicago-tech-week-shortlist-for-you.csv",
-  "utf8"
-);
+// Source CSVs are not committed. Point at them with args or env vars:
+//   node scripts/build-events.mjs <events.csv> <shortlist.csv>
+//   CTW_EVENTS_CSV=... CTW_SHORTLIST_CSV=... npm run build:events
+// Defaults look in scripts/data/. src/data/events.json is the committed
+// source of truth, so you only need this when regenerating from a fresh scrape.
+const eventsCsvPath =
+  process.argv[2] ||
+  process.env.CTW_EVENTS_CSV ||
+  path.join(__dirname, "data", "chicago-tech-week-events-2026.csv");
+const shortlistCsvPath =
+  process.argv[3] ||
+  process.env.CTW_SHORTLIST_CSV ||
+  path.join(__dirname, "data", "chicago-tech-week-shortlist-for-you.csv");
+
+for (const [label, file] of [
+  ["events", eventsCsvPath],
+  ["shortlist", shortlistCsvPath],
+]) {
+  if (!fs.existsSync(file)) {
+    console.error(
+      `Missing ${label} CSV: ${file}\n` +
+        `Pass a path as an argument, or set CTW_EVENTS_CSV / CTW_SHORTLIST_CSV.\n` +
+        `(src/data/events.json is already committed — you only need this to rebuild from a new scrape.)`
+    );
+    process.exit(1);
+  }
+}
+
+const csv = fs.readFileSync(eventsCsvPath, "utf8");
+const short = fs.readFileSync(shortlistCsvPath, "utf8");
 
 const events = parseCsv(csv);
 const shortlist = parseCsv(short);
